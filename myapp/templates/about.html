@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="icon" type="image/x-icon" href="/static/img/Icon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <style>
+        /* Resetting default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body and container styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('https://images.pexels.com/photos/188035/pexels-photo-188035.jpeg?cs=srgb&dl=pexels-ingo-188035.jpg&fm=jpg') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .hero h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.5em;
+            margin-bottom: 40px;
+        }
+
+        .cta-btn {
+            padding: 10px 25px;
+            background-color: #333;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            background-color: #555;
+        }
+
+        /* Mission Section */
+        .mission {
+            background-color: #fff;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .mission h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .mission p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Core Values Section */
+        .values {
+            background-color: #f4f4f4;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .values h2 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+        }
+
+        .values-container {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .value {
+            width: 30%;
+        }
+
+        .value h3 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .value p {
+            font-size: 1.1em;
+        }
+
+        /* Team Section */
+        .team {
+            padding: 60px 0;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .team h2 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+        }
+
+        .team-members {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .team-member {
+            width: 30%;
+            text-align: center;
+        }
+
+        .team-member img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .team-member h3 {
+            font-size: 1.6em;
+            margin-bottom: 10px;
+        }
+
+        .team-member p {
+            font-size: 1.2em;
+            color: #777;
+        }
+
+        /* Footer */
+        footer {
+            background-color: black;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 1em;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- nav start -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Tops</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                    {% if person %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contectus">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/node">Notes</a>
+                    </li>
+                    {% endif %}
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
+                    {% if person is none %}
+                    <a href="/userlogin" class="btn btn-outline-warning mx-2" type="submit">Login</a>
+                    {% else %}
+                    <div class="dropdown">
+                        <button class="btn btn-info dropdown-toggle mx-2" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            {{ person }}
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/profile">Profile</a></li>
+                        </ul>
+                    </div>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+    </nav>
+    <!-- nav end -->
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Our Company</h1>
+            <p>We believe in delivering the best services with innovation and passion.</p>
+            <a href="#mission" class="cta-btn">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section id="mission" class="mission">
+        <div class="container">
+            <h2>Our Mission</h2>
+            <p>We are committed to providing high-quality services that make a difference in the world. Our focus is to
+                create value through innovative ideas, sustainable practices, and a customer-first approach.</p>
+        </div>
+    </section>
+
+    <!-- Our Values Section -->
+    <section class="values">
+        <div class="container">
+            <h2>Our Core Values</h2>
+            <div class="values-container">
+                <div class="value">
+                    <h3>Integrity</h3>
+                    <p>We uphold the highest standards of integrity in all of our actions.</p>
+                </div>
+                <div class="value">
+                    <h3>Innovation</h3>
+                    <p>We foster creativity and encourage new ideas to solve problems.</p>
+                </div>
+                <div class="value">
+                    <h3>Customer Focus</h3>
+                    <p>We put our customers at the heart of everything we do.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team">
+        <div class="container">
+            <h2>Meet Our Team</h2>
+            <div class="team-members">
+                <div class="team-member">
+                    <img src="https://e1.pxfuel.com/desktop-wallpaper/703/832/desktop-wallpaper-45-tanjiro-ideas-tanjiro-smile-thumbnail.jpg" alt="Team Member 1">
+                    <h3>Tanjiro</h3>
+                    <p>CEO & Founder</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6dDSweawzPCQ4EFWV4hMm7t3KUqJrnMVTQQ&s" alt="Team Member 2">
+                    <h3>Zenitsu</h3>
+                    <p>Lead Developer</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://w0.peakpx.com/wallpaper/44/734/HD-wallpaper-inosuke-hashibira-close-up-demon-hunter-samurai-kimetsu-no-yaiba-demon-slayer-manga-inosuke-hashibira-with-sword-hashibira-inosuke.jpg" alt="Team Member 3">
+                    <h3>Inosuke</h3>
+                    <p>Designer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script async src='https://d2mpatx37cqexb.cloudfront.net/delightchat-whatsapp-widget/embeds/embed.min.js'></script>
+        <script>
+          var wa_btnSetting = {"btnColor":"#16BE45","ctaText":"","cornerRadius":40,"marginBottom":20,"marginLeft":20,"marginRight":20,"btnPosition":"right","whatsAppNumber":"919586974646","welcomeMessage":"Hemlooooo.....","zIndex":999999,"btnColorScheme":"light"};
+          window.onload = () => {
+            _waEmbed(wa_btnSetting);
+          };
+        </script>
+      
+
+    <!-- Footer Start -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Company Logo & About -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <h4 class="fw-bold mb-3">Tops Cars</h4>
+                    <p class="small">Providing high-quality cars with exceptional service. Your journey starts here.</p>
+                    <div class="mt-3">
+                        <a href="#" class="text-white me-2"><i class="bi bi-facebook fs-4"></i></a>
+                        <a href="#" class="text-white me-2"><i class="bi bi-twitter fs-4"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-instagram fs-4"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="/" class="text-white text-decoration-none">Home</a></li>
+                        <li><a href="/about" class="text-white text-decoration-none">About Us</a></li>
+                        {% if person %}
+                        <li><a href="/contectus" class="text-white text-decoration-none">Contact</a></li>
+                        <li><a href="/node" class="text-white text-decoration-none">Notes</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+
+                <!-- Customer Support -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="mb-3">Customer Support</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white text-decoration-none">FAQs</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Support Center</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Privacy Policy</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="mb-3">Get in Touch</h5>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><i class="bi bi-envelope me-2"></i> cars@gmail.com</li>
+                        <li class="mb-2"><i class="bi bi-telephone me-2"></i> +123-456-7890</li>
+                        <li><i class="bi bi-geo-alt me-2"></i> 123 Main Street, City, Country</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Copyright Notice -->
+            <div class="row mt-4">
+                <div class="col text-center small">
+                    <p class="m-0">&copy; 2024 Tops Cars. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer End -->
+
+</body>
+
+</html>

@@ -39,13 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'myapp',
-
-    # auth
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
-    'allauth.socialaccount.providers.github',
 ]
 
 MIDDLEWARE = [
@@ -56,9 +49,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
-    # auth
-    'allauth.account.middleware.AccountMiddleware',
 ]
 
 AUTHENTICATION_BACKENDS = [
@@ -160,25 +150,6 @@ EMAIL_HOST_PASSWORD = 'miha rqmm jzme jsto'
 
 
 LOGIN_REDIRECT_URL = '/'
-
-SOCIALACCOUNT_PROVIDERS = {
-    'google': {
-        'SCOPE': ['profile', 'email'],
-        'APP': {
-            'client_id': '',
-            'secret': '',
-            'key': ''
-        }
-    },
-    'github': {
-        'SCOPE': ['user', 'repo'],
-        'APP': {
-            'client_id': '',
-            'secret': '',
-            'key': ''
-        }
-    }
-}
 
 JAZZMIN_UI_TWEAKS = {
     "theme": "darkly",
